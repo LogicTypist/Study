@@ -4,7 +4,6 @@
 
 using namespace std;
 
-int min(int a, int b);
 
 int main(){
     cin.tie(NULL);
