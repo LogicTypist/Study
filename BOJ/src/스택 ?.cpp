@@ -1,4 +1,5 @@
 //스택 ~ 10828 @ 백준
+//스택 함수를 이용해 구현하지않음.
 
 #include <iostream>
 #include <cstring>
