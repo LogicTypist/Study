@@ -1,62 +1,47 @@
+//단어 정렬 ~ 1181 @ 백준
+
 #include <iostream>
-#include <cmath>
-#include <string.h>
+#include <cstring>
 
 //using namespace std;
 
-class Photon_Cannon{
-    int hp, shield;
-    int coord_x, coord_y;
-    int damage;
-
-    char* name;
-
-    public:
-    Photon_Cannon(int x, int y);
-    Photon_Cannon(int x, int y, const char *cannon_name);
-    Photon_Cannon(const Photon_Cannon &pc);
-    ~Photon_Cannon();
-
-    void show_status();
-};
-
- Photon_Cannon::Photon_Cannon(int x, int y){
-    hp = 100;
-    shield = 100;
-    coord_x = x;
-    coord_y = y;
-    damage = 20;
-    name = NULL;
- }
- Photon_Cannon::Photon_Cannon(int x, int y, const char *cannon_name){
-    hp = 100;
-    shield = 100;
-    coord_x = x;
-    coord_y = y;
-    damage = 20;
-    name = new char[strlen(cannon_name) + 1];
-    strcpy(name, cannon_name);
- }
-Photon_Cannon::Photon_Cannon(const Photon_Cannon &pc){
-    hp = pc.hp;
-    shield = pc.shield;
-    coord_x = pc.coord_x;
-    coord_y = pc.coord_y;
-    damage = pc.damage;
-    name = new char[strlen(pc.name) + 1];
-    strcpy(name, pc.name);
-}
-Photon_Cannon::~Photon_Cannon(){
-    if (name) delete[] name;
-}
-void Photon_Cannon::show_status(){
-    std::cout << "Photon_Cannon" << std::endl;
-    std::cout << "Name : " << name << std::endl;
-    std::cout << "HP : " << hp << std::endl;
-    std::cout << "shield : " << shield << std::endl;
-    std::cout << "damage" << std::endl;
-}
-
 int main(){
-    
+  char* word_list[20000];
+  int word_length[20000];
+
+  int step;
+  std::cin >> step;
+
+  for(int i = 0; i < step; i++){
+    word_list[i] = new char[51];
+    std::cin >> word_list[i];
+    word_length[i] = strlen(word_list[i]);
+  }
+
+  while(1){
+    bool pass = true;
+    for(int i = 0; i < step - 1; i++){
+      char* temp;
+      if(word_length[i] > word_length[i + 1] || (word_length[i] == word_length[i + 1] && strcmp(word_list[i], word_list[i + 1]) > 0)){
+        temp = word_list[i];
+        word_list[i] = word_list[i + 1];
+        word_list[i + 1] = temp;
+        pass = false;
+      }
+
+    }
+    if(pass){
+      break;
+    }
+  }
+
+  for(int i = 0; i < step; i++){
+    if(strcmp(word_list[i], word_list[i - 1]) != 0){
+    std::cout << word_list[i] << std::endl;
+    }
+  }
+  for(int i = 0; i < step; i++){
+    delete[] word_list[i];
+  }
+  return 0;
 }
