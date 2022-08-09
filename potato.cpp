@@ -1,10 +1,9 @@
-// ~  @ 백준
+//하노이 탑 이동 순서 ~ 11729 @ 백준
 
 #include <iostream>
-#include <string>
+#include <cmath>
 
 //using namespace std;
 
 int main(){
-  std::cout << "Hello World!" << std::endl;
 }
