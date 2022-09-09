@@ -1,35 +1,37 @@
-//ATM ~ 11399 @ 백준
+//분해합 ~ 2231 @ 백준
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <set>
 
 //using namespace std;
 
 int main(){
-    int peoples;
-    std::vector<int> time;
 
-    std::cin >> peoples;
+    int cases;
+    std::cin >> cases;
+    for(int i = 0; i < cases; ++i){
+        int num_students;
+        int students[300] = {};
 
-    for(int i = 0; i < peoples; ++i){
-        int input;
-        std::cin >> input;
-        time.push_back(input);
+        std::cin >> num_students;
+        for(int i = 0; i < num_students; ++i){
+            std::cin >> students[i];
+        }
+
+        int current = num_students;
+        while(true){
+            std::set<int> mod;
+
+            for(int i = 0; i < num_students; ++i){
+                int curr_mod = students[i] % current;
+                if(mod.count(curr_mod) == 0){
+                    mod.insert(curr_mod);
+                }else{
+                    goto 
+                }
+            }
+
+        }
     }
-
-    std::sort(time.begin(), time.end());
-
-    std::vector<int>::iterator it = time.begin();
-
-    int total_time = 0;
-    int current_elapsed_time = 0;
-    while(it != time.end()){
-        current_elapsed_time += *it;
-        total_time += current_elapsed_time;
-        ++it;
-    }
-
-    std::cout << total_time;
-
+    
 }
