@@ -1,49 +1,40 @@
-//캥거루 세마리2 ~ 11034 @ 백준
+//Maximum Subarray ~ 10211 @ 백준
 
 #include <iostream>
-
-
 //using namespace std;
 
-
 int main(){
-
-    
+    std::ios_base :: sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
 
     int test_cases;
-
+    std::cin >> test_cases;
     for(int i = 0; i < test_cases; ++i){
-        int length;
-        int num_of_ant;
-        int pos[100000] = {};
+        int number_length;
+        int num_array[1000] = {};
+        int sum_array[1000] = {};
+        std::cin >> number_length;
 
-        std::cin >> length >> num_of_ant;
-        for(int j = 0; j < num_of_ant; ++j){
-            std::cin >> pos[j];
+        int sum = 0;
+        for(int j = 0; j < number_length; ++j){
+            std::cin >> num_array[j];
+            sum += num_array[j];
+            sum_array[j] = sum;
         }
+
+        int max = -10000000;
+        for(int j = 0; j < number_length; ++j){
+            for(int k = j; k < number_length; ++k)
+            if(sum_array[k] - sum_array[j] + num_array[j] > max){
+                max = sum_array[k] - sum_array[j] + num_array[j];
+            }
+        }
+        
+        std::cout << max << "\n";
+
 
 
     }
-
-}
-
-
-int shortest_time(int length, int num_of_ant, int pos[100000]){
-    int center = length / 2;
-
-    int min_diff = length;
-    int min_diff_pos;
-
-    for(int i = 0; i < num_of_ant; ++i){
-        int diff = center - pos[i];
-        diff = diff > 0 ? diff : -diff;
-        if(diff < min_diff){
-            min_diff = diff;
-            min_diff_pos = i;
-        }
-    }
-
-
-
-
+    
 }
