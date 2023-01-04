@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-long long memo[1001] = {};
+int memo[1001] = {};
 
 void compute(){
     
@@ -12,7 +12,7 @@ void compute(){
     memo[2] = 2;
     memo[3] = 3;
     for(int i = 4; i < 1001; ++i){
-        memo[i] = (memo[i-2] + memo[i-1]) % 10007;
+        memo[i] = memo[i-2] + memo[i-1];
     }
 }
 
