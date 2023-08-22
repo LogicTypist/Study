@@ -39,8 +39,10 @@ int main(){
     for(int i = 0; i < M; i++){
         int input;
         std::cin >> input;
-        std::cout << std::binary_search(data, data+N, input) << "\n";
-    } 
-
+        std::cout << binary_search(0, N-1, input) << "\n";
+    }
 
 }
+
+//20230822
+//ㅋㅋ 잘된다
